@@ -1,14 +1,14 @@
 import socket
 
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # AF_INET = IP, SOCK_STREAM = TCP
-server.bind(('158.193.224.88', 1002))  # 127.0.0.1
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  
+server.bind(('', 1002)) 
 server.listen()
 
 client_socket, client_address = server.accept()
 
 file = open('server_image.jpg', "wb")
-image_chunk = client_socket.recv(2048)  # stream-based protocol
+image_chunk = client_socket.recv(2048)
 
 while image_chunk:
     file.write(image_chunk)
